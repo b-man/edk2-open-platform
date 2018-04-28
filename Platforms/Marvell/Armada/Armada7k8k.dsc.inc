@@ -469,6 +469,12 @@
   ArmPkg/Drivers/ArmPciCpuIo2Dxe/ArmPciCpuIo2Dxe.inf
   MdeModulePkg/Bus/Pci/PciHostBridgeDxe/PciHostBridgeDxe.inf
   MdeModulePkg/Bus/Pci/PciBusDxe/PciBusDxe.inf
+!if $(SUPPORT_X86EMU) == TRUE
+  #
+  # x86 emulation for option roms
+  #
+  X86EmulatorPkg/X86Emulator.inf
+!endif
 
   # Console packages
   MdeModulePkg/Universal/Console/ConPlatformDxe/ConPlatformDxe.inf

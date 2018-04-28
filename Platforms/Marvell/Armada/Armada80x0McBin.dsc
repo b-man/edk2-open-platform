@@ -45,6 +45,8 @@
   SKUID_IDENTIFIER               = DEFAULT
   FLASH_DEFINITION               = OpenPlatformPkg/Platforms/Marvell/Armada/Armada7k8k.fdf
 
+  DEFINE SUPPORT_X86EMU          = TRUE
+
 !include Armada7k8k.dsc.inc
 
 [LibraryClasses.common]
