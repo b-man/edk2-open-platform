@@ -46,6 +46,7 @@
 
 # Basic utility libraries
   BaseLib|MdePkg/Library/BaseLib/BaseLib.inf
+  SafeIntLib|MdePkg/Library/BaseSafeIntLib/BaseSafeIntLib.inf
   SynchronizationLib|MdePkg/Library/BaseSynchronizationLib/BaseSynchronizationLib.inf
   PerformanceLib|MdePkg/Library/BasePerformanceLibNull/BasePerformanceLibNull.inf
   PrintLib|MdePkg/Library/BasePrintLib/BasePrintLib.inf
@@ -53,6 +54,7 @@
   PeCoffLib|MdePkg/Library/BasePeCoffLib/BasePeCoffLib.inf
   IoLib|MdePkg/Library/BaseIoLibIntrinsic/BaseIoLibIntrinsic.inf
   UefiDecompressLib|MdePkg/Library/BaseUefiDecompressLib/BaseUefiDecompressLib.inf
+  BmpSupportLib|MdeModulePkg/Library/BaseBmpSupportLib/BaseBmpSupportLib.inf
   CpuLib|MdePkg/Library/BaseCpuLib/BaseCpuLib.inf
   PciLib|MdePkg/Library/BasePciLibPciExpress/BasePciLibPciExpress.inf
   PciHostBridgeLib|OpenPlatformPkg/Platforms/Marvell/Armada/Library/Armada70x0PciHostBridgeLib/Armada70x0PciHostBridgeLib.inf
@@ -569,6 +571,10 @@
       # don't bother with ACPI versions older than 5.0
       gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiExposedTableVersions|0x20
   }
+
+  # Boot graphics
+  MdeModulePkg/Logo/LogoDxe.inf
+  MdeModulePkg/Universal/Acpi/BootGraphicsResourceTableDxe/BootGraphicsResourceTableDxe.inf
 
 [BuildOptions.common.EDKII.DXE_CORE,BuildOptions.common.EDKII.DXE_DRIVER,BuildOptions.common.EDKII.UEFI_DRIVER,BuildOptions.common.EDKII.UEFI_APPLICATION]
   GCC:*_*_*_DLINK_FLAGS = -z common-page-size=0x1000
