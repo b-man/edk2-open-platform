@@ -209,7 +209,7 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2, "MVEBU ", "ARMADA7K", 3)
             Name (_UID, 0x00)                                      // _UID: Unique ID
             Name (_CRS, ResourceTemplate () {
                 Memory32Fixed (ReadWrite, 0xF2760000, 0x7D)
-                Interrupt (ResourceConsumer, Level, ActiveHigh, Shared) { 95 }
+                Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive) { 105 }
             })
             Name (_DSD, Package () {
                 ToUUID("daffd814-6eba-4d8c-8a91-bc9bbf4aa301"),
