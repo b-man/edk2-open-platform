@@ -108,26 +108,26 @@ ACPI_6_0_MADT_STRUCTURE Madt = {
     EFI_ACPI_6_0_GIC_MSI_FRAME_INIT(0x0,                        // GicMsiFrameId
                                     GIC_MSI_FRAME0,             // BaseAddress
                                     0,                          // Flags
-                                    0,                          // SPICount
-                                    0                           // SPIBase
+                                    0x20,                       // SPICount
+                                    0x0A0                       // SPIBase
                                     ),
     EFI_ACPI_6_0_GIC_MSI_FRAME_INIT(0x1,                        // GicMsiFrameId
                                     GIC_MSI_FRAME1,             // BaseAddress
                                     0,                          // Flags
-                                    0,                          // SPICount
-                                    0                           // SPIBase
+                                    0x20,                       // SPICount
+                                    0x0C0                       // SPIBase
                                     ),
     EFI_ACPI_6_0_GIC_MSI_FRAME_INIT(0x2,                        // GicMsiFrameId
                                     GIC_MSI_FRAME2,             // BaseAddress
                                     0,                          // Flags
-                                    0,                          // SPICount
-                                    0                           // SPIBase
+                                    0x20,                       // SPICount
+                                    0x0E0                       // SPIBase
                                     ),
     EFI_ACPI_6_0_GIC_MSI_FRAME_INIT(0x3,                        // GicMsiFrameId
                                     GIC_MSI_FRAME3,             // BaseAddress
                                     0,                          // Flags
-                                    0,                          // SPICount
-                                    0                           // SPIBase
+                                    0x20,                       // SPICount
+                                    0x100                       // SPIBase
                                     ),
   }
 };
