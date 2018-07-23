@@ -68,6 +68,20 @@ ArmadaSoCDescComPhyGet (
   return EFI_SUCCESS;
 }
 
+UINTN
+EFIAPI
+ArmadaSoCDescCpBaseGet (
+  IN UINTN        CpIndex
+  )
+{
+  if (CpIndex >= FixedPcdGet8 (PcdMaxCpCount)) {
+    DEBUG ((DEBUG_ERROR, "%a: Wrong CP index (%d)\n", __FUNCTION__, CpIndex));
+    return 0;
+  }
+
+  return MV_SOC_CP_BASE (CpIndex);
+}
+
 //
 // Platform description of GPIO
 //
@@ -146,6 +160,39 @@ ArmadaSoCDescI2cGet (
 
   *I2cDesc = Desc;
   *DescCount = I2cIndex;
+
+  return EFI_SUCCESS;
+}
+
+/*
+ * Allocate the MSI address per interrupt Group,
+ * unsopprted Groups get NULL address
+ */
+STATIC
+MV_SOC_ICU_DESC mA7k8kIcuDescTemplate = {
+  0,                                           /* GIC SPI mapping offset */
+  {
+    {ICU_GROUP_NSR,  0xf03f0040, 0xf03f0048},  /* Non secure interrupts*/
+    {ICU_GROUP_SR,   0x0,        0x0},         /* Secure interrupts */
+    {ICU_GROUP_LPI,  0x0,        0x0},         /* LPI interrupts */
+    {ICU_GROUP_VLPI, 0x0,        0x0},         /* Virtual LPI interrupts */
+    {ICU_GROUP_SEI,  0xf03f0230, 0xf03f0230},  /* System error interrupts */
+    {ICU_GROUP_REI,  0xf03f0270, 0xf03f0270},  /* RAM error interrupts */
+  }
+};
+
+EFI_STATUS
+EFIAPI
+ArmadaSoCDescIcuGet (
+  IN OUT MV_SOC_ICU_DESC  **IcuDesc
+  )
+{
+  *IcuDesc = AllocateCopyPool (sizeof (mA7k8kIcuDescTemplate),
+               &mA7k8kIcuDescTemplate);
+  if (*IcuDesc == NULL) {
+    DEBUG ((DEBUG_ERROR, "%a: Cannot allocate memory\n", __FUNCTION__));
+    return EFI_OUT_OF_RESOURCES;
+  }
 
   return EFI_SUCCESS;
 }
